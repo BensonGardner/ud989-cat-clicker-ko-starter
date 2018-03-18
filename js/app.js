@@ -1,4 +1,5 @@
-var ViewModel = function() {
+var Cat = function() {
+
     this.clickCount = ko.observable(0);
     this.level = ko.computed(function() {
         if (this.clickCount() < 10) {
@@ -12,10 +13,22 @@ var ViewModel = function() {
     this.name = ko.observable('Jinko');
     this.imgSrc = ko.observable('img/22252709_010df3379e_z.jpg');
     this.imgAttribution = ko.observable('https://www.glickr.com/photos/');
+    this.nicknames = [
+        {nickname: 'Hezrah'},
+        {nickname: 'Herberty'},
+        {nickname: 'Steve-O'},
+        {nickname: 'Pawer'}
+    ];
+    
+}
+
+var ViewModel = function() {
+
+    this.currentCat = ko.observable( new Cat() );
     
     this.incrementCounter = function() {
-        this.clickCount(this.clickCount() + 1);
-        console.log(this.clickCount());
+        this.currentCat().clickCount(this.currentCat().clickCount() + 1);
+        console.log(this.currentCat().clickCount());
     };
 }
 
